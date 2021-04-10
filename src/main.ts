@@ -19,13 +19,13 @@ import { iterate_over_paths } from "./algos/shortest-path";
 
     graph.createLinksBetweenNodes( 'ATL', 'WA', 200 );
     graph.createLinksBetweenNodes( 'ATL', 'KFJ', 100 );
-    graph.createLinksBetweenNodes( 'KFJ', 'WA', 150 );
+    //graph.createLinksBetweenNodes( 'KFJ', 'WA', 150 );
     graph.createLinksBetweenNodes( 'ATL', 'LUX', 120 );
     graph.createLinksBetweenNodes( 'WA', 'CAL', 500 );
      graph.createLinksBetweenNodes('WA', 'LUX', 50);
     graph.createLinksBetweenNodes( 'WA', 'OHI', 100 );
     graph.createLinksBetweenNodes( 'OHI', 'LUX', 410 );
-    graph.createLinksBetweenNodes('LUX', 'OHI', 400)
+    //graph.createLinksBetweenNodes('LUX', 'OHI', 400)
     
 
     console.log( graph.getCompleteGraph() );
