@@ -1,7 +1,7 @@
 import { Graph_DS } from "./DS/graph";
 import { traverse_bfs } from "./algos/bfs";
 import { NodeModel } from "./DS/models/node";
-import { iterate_over_paths } from "./algos/shortest-path";
+import { find_shortest_path } from "./algos/shortest-path";
 
 ( async function bootstrap() {
 
@@ -19,13 +19,13 @@ import { iterate_over_paths } from "./algos/shortest-path";
 
     graph.createLinksBetweenNodes( 'ATL', 'WA', 200 );
     graph.createLinksBetweenNodes( 'ATL', 'KFJ', 100 );
-    //graph.createLinksBetweenNodes( 'KFJ', 'WA', 150 );
+    graph.createLinksBetweenNodes( 'KFJ', 'WA', 150 );
     graph.createLinksBetweenNodes( 'ATL', 'LUX', 120 );
     graph.createLinksBetweenNodes( 'WA', 'CAL', 500 );
-     graph.createLinksBetweenNodes('WA', 'LUX', 50);
+    graph.createLinksBetweenNodes('WA', 'LUX', 50);
     graph.createLinksBetweenNodes( 'WA', 'OHI', 100 );
     graph.createLinksBetweenNodes( 'OHI', 'LUX', 410 );
-    //graph.createLinksBetweenNodes('LUX', 'OHI', 400)
+    graph.createLinksBetweenNodes('LUX', 'OHI', 400)
     
 
     console.log( graph.getCompleteGraph() );
@@ -40,7 +40,7 @@ import { iterate_over_paths } from "./algos/shortest-path";
     const finalListWithEdgesAndDesitination = traverse_bfs( graph, atl, ohi );
     console.log( 'THis is the final list:', finalListWithEdgesAndDesitination );
 
-    iterate_over_paths<Number>(atl, ohi, finalListWithEdgesAndDesitination);
+    console.log(find_shortest_path<Number>(atl, ohi, finalListWithEdgesAndDesitination));
     // Now based on the list obtained find the shortest possible path
 
     console.log( '##############- ENd of Graph Creation and Traversal ####################' );

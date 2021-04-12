@@ -1,27 +1,46 @@
 import { NodeModel } from "src/DS/models/node";
 import { BFSNodeWithEdges } from "./models/bfs-node";
-import { stringify } from "qs";
 
-export function iterate_over_paths<T>( originNode: NodeModel<T>, destinationNode: NodeModel<T>, listofBSFNodeWithEdges: BFSNodeWithEdges<T>[]){
 
-    const completePathMap = new Map<string, object>(); 
+export function find_shortest_path<T>( originNode: NodeModel<T>, destinationNode: NodeModel<T>, listofBSFNodeWithEdges: BFSNodeWithEdges<T>[]){
+
+    const filteredBFSNodes = destinationPathList(listofBSFNodeWithEdges); 
+    const edgeList = calc_edges( filteredBFSNodes );
+    edgeList.sort( dynamicsort('edge', 'asc'));
+    return edgeList[0];
+}
+
+function destinationPathList<T>( listofBSFNodeWithEdges: BFSNodeWithEdges<T>[]) {
     // first get to the point where foundDestination boolean value is true
-    listofBSFNodeWithEdges.forEach( ( bsfNode, index ) => {
-        if ( bsfNode.foundDestination ) {
-            // get its corresponding iteration done -if 2, it means u have to iterate the give list 2 times reverse to find the origin - excluding the given current index
-            // if its 1, it means, u have to iterate it once, excluding the given current index, but that gives the number of iterations to be done
-            // make sure to add the edges along the way, better store it in a map with key being ('originNodeNaem'+'itrCount') and value being the path and edge value calc
-            const originNode = bsfNode.originNode;
-            const itrCount = bsfNode.itrCount;
-            console.log( 'getting origin node here and number of times to iterate:', originNode, itrCount );
+    return listofBSFNodeWithEdges.filter( item => item.foundDestination );
+}
+
+
+function calc_edges<T>( listofBSFNodeWithEdges: BFSNodeWithEdges<T>[] ) {
+    const edgeList = [];
+    listofBSFNodeWithEdges.forEach( item => {
+        const edgeWeight = item.linkedNode.edgeWeight ? item.linkedNode.edgeWeight + item.originNode.edgeWeight : item.linkedNode.edgeWeight;
+        const path = item.originNode.nodeName + "=>" + item.linkedNode.nodeName;
+        edgeList.push( { edge: edgeWeight, path: path } );
+    } );
+    return edgeList;
+}
+
+function dynamicsort( property, order ) {
+    var sort_order = 1;
+    if ( order === "desc" ) {
+        sort_order = -1;
+    }
+    return function ( a, b ) {
+        // a should come before b in the sorted order
+        if ( a[property] < b[property] ) {
+            return -1 * sort_order;
+            // a should come after b in the sorted order
+        } else if ( a[property] > b[property] ) {
+            return 1 * sort_order;
+            // a and b are the same
+        } else {
+            return 0 * sort_order;
         }
-    })
-}
-
-function recursive_iteration<T>(completePathMap:Map<string, object>, listofBSFNodeWithEdges: BFSNodeWithEdges<T>[], noOfTimesToIterate: number ) {
-    
-}
-
-export function shortestPath() {
-
+    }
 }
