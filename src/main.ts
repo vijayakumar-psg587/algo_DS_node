@@ -5,6 +5,7 @@ import { find_shortest_path } from './algos/shortest-path';
 import { GenericArray } from './algos/models/arrays/generic_arr';
 import { sort_arr_obj } from './algos/arrays/sorting_array_of_obj';
 import { rm_brute_force } from './algos/arrays/remove_duplicates_sarray';
+import { fibNormal, fibGen } from './questions/fib-with-generator/fib-gen';
 
 (async function bootstrap() {
   // Sorting array strings of objects
@@ -66,4 +67,17 @@ import { rm_brute_force } from './algos/arrays/remove_duplicates_sarray';
   // Now based on the list obtained find the shortest possible path
 
   console.log('##############- ENd of Graph Creation and Traversal ####################');
+
+  console.log('##########Fibnocci############');
+
+  //console.log(fibNormal(7));
+  console.log(fibNormal(3, []));
+  const fibItr = fibGen();
+  console.log('f', fibItr.next());
+  console.log('s', fibItr.next());
+  console.log('t', fibItr.next());
+  console.log(fibItr.next());
+  console.log(fibItr.next());
+  console.log(fibItr.next());
+  console.log('##########End of Fibnocci############');
 })();
