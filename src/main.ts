@@ -69,9 +69,9 @@ import { fibNormal, fibGen } from './questions/fib-with-generator/fib-gen';
   console.log('##############- ENd of Graph Creation and Traversal ####################');
 
   console.log('##########Fibnocci############');
-
+  //cfbucket-325587.s3.amazonaws.com/27846.jpg
   //console.log(fibNormal(7));
-  console.log(fibNormal(3, []));
+  https: console.log(fibNormal(3, []));
   const fibItr = fibGen();
   console.log('f', fibItr.next());
   console.log('s', fibItr.next());
