@@ -1,8 +1,28 @@
-**Note: The config folder should be added to gitignore.**
+**This is a small collection of algo and DS implemented in typecript.**
 
-**Please create config folder -> /config/development/.env**
+**Available algo & DS in typecript.**
+-  Find a missing number
+-  Matching brackets
+-  Two number sum
+-  Union of arrays
+-  Find values in array that matches target sum
+-  Finoacci series with generators
+-  In memory DB implementation  - Sample
+-  Graph algorithm -  bfs - own logic implementation with data strcutures
 
-- Steps to run:
+
+## DATA STRCUTURES
+
+- Stack
+- Queue
+- LinkedList
+- Priority Queue
+- Set
+- Graph
+- BST - Simple 
+
+
+## Steps to run:
 
 1. First clone the project:
 
