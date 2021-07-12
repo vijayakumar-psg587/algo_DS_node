@@ -7,7 +7,7 @@
 -  Union of arrays
 -  Find values in array that matches target sum
 -  Finoacci series with generators
--  In memory DB implementation  - Sample
+-  In memory DB implementation  - Simple Implementation with Observer Pattern, Factory Pattern, Singleton       pattern. Showcased basic building block that mighbe used in CDC
 -  Graph algorithm -  bfs - own logic implementation with data strcutures
 
 
