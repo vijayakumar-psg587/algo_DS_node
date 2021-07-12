@@ -1,15 +1,20 @@
-import { IMemDb } from '../interfaces/in-memory.int';
+import { IMemDbIntf } from '../interfaces/in-memory.int';
 import { BusinessUnit } from './bu-in-mem-storage.impl';
 
-export class BuInMemoryDbImpl implements IMemDb<BusinessUnit, string, string> {
+export class BuInMemoryDbImpl implements IMemDbIntf<BusinessUnit> {
   private buData: BusinessUnit[];
 
   constructor() {
     this.buData = [];
   }
-  setRecords(rec: BusinessUnit): void {
+  setRecord(rec: BusinessUnit): void {
     throw new Error('Method not implemented.');
   }
+
+  setRecords(rec: BusinessUnit[]): void {
+    throw new Error('Method not implemented.');
+  }
+
   getRecordById(id: string): BusinessUnit {
     throw new Error('Method not implemented.');
   }

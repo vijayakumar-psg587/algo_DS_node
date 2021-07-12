@@ -6,6 +6,8 @@ import { GenericArray } from './algos/models/arrays/generic_arr';
 import { sort_arr_obj } from './algos/arrays/sorting_array_of_obj';
 import { rm_brute_force } from './algos/arrays/remove_duplicates_sarray';
 import { fibNormal, fibGen } from './questions/fib-with-generator/fib-gen';
+import { createDatabase } from './questions/in-mem-db/factory-pattern-impl';
+import { BusinessUnit } from './questions/in-mem-db/impl/bu-in-mem-storage.impl';
 
 (async function bootstrap() {
   // Sorting array strings of objects
@@ -71,7 +73,7 @@ import { fibNormal, fibGen } from './questions/fib-with-generator/fib-gen';
   console.log('##########Fibnocci############');
   //cfbucket-325587.s3.amazonaws.com/27846.jpg
   //console.log(fibNormal(7));
-  https: console.log(fibNormal(3, []));
+  //console.log(fibNormal(3, []));
   const fibItr = fibGen();
   console.log('f', fibItr.next());
   console.log('s', fibItr.next());
@@ -80,4 +82,24 @@ import { fibNormal, fibGen } from './questions/fib-with-generator/fib-gen';
   console.log(fibItr.next());
   console.log(fibItr.next());
   console.log('##########End of Fibnocci############');
+
+  console.log('######### In MembDb #################');
+  const dbObj = await createDatabase<BusinessUnit>();
+
+  const val1: BusinessUnit = { id: '1', value: '10' };
+  const val2: BusinessUnit = { id: '1', value: '12' };
+  dbObj.setRecord(val1);
+  const afterAddUnsubscribe = dbObj.onAfterAddEvent(({ newValue }) => {
+    console.log('subscribedAfter Add: Going to print all values afded after val1 obj', newValue);
+  });
+  dbObj.setRecord(val2);
+  dbObj.setRecord({ id: '1', value: '144' });
+  dbObj.setRecord({ id: '1', value: '145' });
+
+  afterAddUnsubscribe();
+  console.log('Now no values should be printed since afterAdd is unsubscibed');
+  dbObj.setRecord({ id: '1', value: '146' });
+  dbObj.setRecord({ id: '1', value: '147' });
+  console.log('Printing all inmem records to show what happened', dbObj.getAllRecords());
+  console.log('######### In MembDb #################');
 })();
