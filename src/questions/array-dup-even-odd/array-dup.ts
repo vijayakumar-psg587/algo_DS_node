@@ -19,6 +19,23 @@ export async function findOddDuplicateItemWithOofN(arr: number[]) {
   if (arr && arr.length < 1) {
     return new Error('Cannot work on an empty array');
   } else {
-    console.log(arr.filter((val) => arr.findIndex((valueOfIndex) => (valueOfIndex >> 1) % val) != 0));
+    const arrMap: Map<number, number> = new Map<number, number>();
+    arr.forEach((val, idx) => {
+      if (arrMap.size === 0 || !arrMap.has(val)) {
+        arrMap.set(val, 1);
+      } else if (arrMap.has(val)) {
+        const numberOfOccurances = arrMap.get(val) + 1;
+        arrMap.set(val, numberOfOccurances);
+      }
+    });
+    console.log('arrMap:', arrMap);
+    let valFound = null;
+    arrMap.forEach((val, key) => {
+      console.log('', key, val, val % 2);
+      if (val % 2 > 0) {
+        valFound = key;
+      }
+    });
+    return valFound;
   }
 }
