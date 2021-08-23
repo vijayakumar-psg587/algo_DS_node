@@ -17,6 +17,7 @@
 - Queue
 - LinkedList
 - Priority Queue
+- Hashed Table with hash Function
 - Set
 - Graph
 - BST - Simple 
