@@ -6,7 +6,7 @@ import { findDupArr } from '../find-dup-arr/find-dup-arr';
 // Example give: [4,3,1,3,1,3,6,6,4] Ans: 3
 
 // This using a hasmap we can first map elem to number of occurances and then find the value by mod of 2 not equals to zero
-export async function findOddDuplicateItemWithOofN(arr: number[]) {
+export function findOddDuplicateItemWithOofN(arr: number[]) {
   if (arr && arr.length < 1) {
     return new Error('Cannot work on an empty array');
   } else {
@@ -32,7 +32,7 @@ export async function findOddDuplicateItemWithOofN(arr: number[]) {
 }
 
 // When we XOR all elements, the only one that remains at the end is the element occuring odd number of times
-export async function findDupArrOddTimeWithBetterSpaceComplexity(arr: number[]) {
+export function findDupArrOddTimeWithBetterSpaceComplexity(arr: number[]) {
   if (arr && arr.length < 1) {
     return new Error('Cannot work on an empty array');
   } else {

@@ -1,6 +1,6 @@
 {
   "watch": ["src/**"],
-  "exec": "ts-node -r tsconfig-paths/register src/main.ts",
+  "exec": "ts-node -r tsconfig-paths/register src/arr.ts",
   "restartable": "rs",
   "verbose": false,
   "ignore": ["src/**/*.spec.ts", "/node_modules/**", "test/**"],
